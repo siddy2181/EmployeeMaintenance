@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+
+<project name="EMS" default="war">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="war.dir" value="${build.dir}/war" />
+
+
+
+
+	<target name="mkdir">
+		<mkdir dir="build/classes" />
+		<mkdir dir="dist" />
+	</target>
+
+	<!-- Delete the existing dist,build direct -->
+	<target name="delete">
+		<delete dir="dist" />
+		<delete dir="build" />
+	</target>
+
+
+	<!-- Path -->
+	<path id="compile.classpath">
+		<fileset dir="WebContent/WEB-INF/lib" />
+	</path>
+
+	<!-- Compiling Target -->
+	<target name="compile" depends="mkdir">
+		<javac destdir="build/classes" debug="true" includeantruntime="false"
+			srcdir="src">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target name="war" depends="compile">
+		<war destfile="dist/AntEMS.war" webxml="WebContent/WEB-INF/web.xml">
+			<!-- Define which file/dir should get included in -->
+			<fileset dir="WebContent" />
+			<lib dir="WebContent/WEB-INF/lib" />
+			<classes dir="build/classes" />
+		</war>
+	</target>
+
+
+
+</project>

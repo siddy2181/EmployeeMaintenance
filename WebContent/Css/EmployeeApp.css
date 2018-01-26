@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background-color: wheat;
+	font-family: monospace;
+	font-size:medium;
+	color: brown;
+	text-align: center;
+}
+
+table{
+	border-color: orange;
+	border: 1;
+	font-weight: bold;
+	rowspan:20%;
+}
+
+h1{
+	color: #004200;
+	font-family: monospace;
+}
